@@ -15,10 +15,12 @@ export default function NavBar(props: NavBarProps) {
 
   return (
     <>
-      <nav>
+      <nav className="flex items-center justify-between gap-4">
         <HamburgerButton></HamburgerButton>
         <div>
-          <h1>{currentPageTitle[currentPage]}</h1>
+          <h1 className="text-4xl font-semibold tracking-wide text-center">
+            {currentPageTitle[currentPage]}
+          </h1>
         </div>
         <div>
           <input type="text" placeholder="Search"></input>
@@ -27,4 +29,3 @@ export default function NavBar(props: NavBarProps) {
     </>
   );
 }
-

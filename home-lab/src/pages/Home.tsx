@@ -5,19 +5,21 @@ function Home() {
   return (
     <>
       <NavBar currentPage="Home"></NavBar>
-      <div className="py-10 px-2">
+      <div className="flex items-center justify-start">
         <DefaultExperimentButton
           text="Physics"
+          to="/physicsHome"
           b_type="b_square"
         ></DefaultExperimentButton>
         <DefaultExperimentButton
           text="Chemisty"
+          to="/chemistryHome"
           b_type="b_square"
         ></DefaultExperimentButton>
       </div>
 
       <footer>
-        <h1>Footer Text Will be implemented later</h1>
+        <h1>Footer Will be implemented later</h1>
       </footer>
     </>
   );
