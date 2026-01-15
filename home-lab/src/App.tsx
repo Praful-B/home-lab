@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import PhysicsHome from "./pages/PhysicsHome";
-import ChemistryHome from "./pages/ChemistryHome";
+import Home from "../src/features/home/pages/Home";
+import PhysicsHome from "../src/features/home/pages/PhysicsHome";
+import ChemistryHome from "../src/features/home/pages/ChemistryHome";
 
 function App() {
   return (

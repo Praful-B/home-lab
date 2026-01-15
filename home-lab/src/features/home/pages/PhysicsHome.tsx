@@ -1,4 +1,4 @@
-import { commonPhysicsExperiments } from "../assets/data/commonPhysicsExperiments";
+import { commonPhysicsExperiments } from "../../../assets/data/commonPhysicsExperiments";
 import DefaultExperimentButton from "../components/DefaultExpeimentButton";
 import NavBar from "../components/NavBar";
 

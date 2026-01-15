@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import type NavBarProps from "../types/NavBarProps";
+import type NavBarProps from "../../../types/NavBarProps";
 import HamburgerButton from "./HamburgerButton";
 
 export default function NavBar(props: NavBarProps) {

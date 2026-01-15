@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import type ButtonProps from "../types/ButtonProps";
-// TODO: Rewrite the entire Component 
+import type ButtonProps from "../../../types/ButtonProps";
+// TODO: Rewrite the entire Component
 export default function DefaultExperimentButton(props: ButtonProps) {
   // const b_width: number = props.b_height;
   // const b_height: number = props.b_height;

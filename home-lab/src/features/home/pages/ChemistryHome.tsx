@@ -1,4 +1,4 @@
-import { commonChemistryExperiments } from "../assets/data/commonChemistryExperiments";
+import { commonChemistryExperiments } from "../../../assets/data/commonChemistryExperiments";
 import DefaultExperimentButton from "../components/DefaultExpeimentButton";
 import NavBar from "../components/NavBar";
 
