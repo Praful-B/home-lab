@@ -5,10 +5,27 @@ import NavBar from "../components/NavBar";
 function PhysicsHome() {
   return (
     <>
-      <NavBar currentPage="PhysicsHome" />
-      {commonPhysicsExperiments.map((exp) => (
-        <DefaultExperimentButton text={exp.name} b_type="rectangle" to="/" />
-      ))}
+      <div>
+        <NavBar currentPage="PhysicsHome" />
+      </div>
+      <div className="flex">
+        <div>
+          {commonPhysicsExperiments.map((exp) => (
+            <DefaultExperimentButton
+              text={exp.name}
+              b_type="rectangle"
+              to="/"
+            />
+          ))}
+        </div>
+        <div>
+          <DefaultExperimentButton
+            b_type="b_square"
+            to="/"
+            text="Advanced SandBox"
+          />
+        </div>
+      </div>
     </>
   );
 }
