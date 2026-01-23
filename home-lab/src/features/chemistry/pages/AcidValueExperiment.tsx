@@ -1,44 +1,48 @@
 import { useState } from "react";
-import { oils } from "../data/oils";
-import LabTable from "../components/LabTable";
 import Beaker from "../components/Beaker";
 import Pipette from "../components/Pipette";
 import DropAnimation from "../components/DropAnimation";
 import ConicalFlask from "../components/ConicalFlask";
+import LabTable from "../components/LabTable";
 import { calculateAcidValue } from "../utils/calculateAcidValue";
+import { oils } from "../data/oils";
 
 export default function AcidValueExperiment() {
-    // DEFAULT VALUES
+    // ===== CONSTANTS =====
     const DEFAULT_WEIGHT = 5; // g
-    const DEFAULT_NORMALITY = 0.1; // N
-    const DEFAULT_VOLUME = 0; // mL
+    const NORMALITY = 0.1; // N
+    const ENDPOINT_VOLUME = 2.5; // mL
 
+    // ===== STATE =====
     const [selectedOil, setSelectedOil] = useState(oils[0]);
     const [oilWeight, setOilWeight] = useState(DEFAULT_WEIGHT);
-    const [volume, setVolume] = useState(DEFAULT_VOLUME);
+    const [volume, setVolume] = useState(0); // mL of KOH
     const [drop, setDrop] = useState(false);
 
+    // ===== CALCULATION =====
     const acidValue = calculateAcidValue(
         volume,
-        DEFAULT_NORMALITY,
+        NORMALITY,
         oilWeight
     );
 
+    // ===== ACTIONS =====
     const addDrop = () => {
         setDrop(true);
-        setVolume((v) => Number((v + 0.1).toFixed(1))); // 0.1 mL per drop
-        setTimeout(() => setDrop(false), 500);
+        setVolume((v) => Number((v + 0.1).toFixed(1)));
+        setTimeout(() => setDrop(false), 600);
     };
 
     const resetExperiment = () => {
         setSelectedOil(oils[0]);
         setOilWeight(DEFAULT_WEIGHT);
-        setVolume(DEFAULT_VOLUME);
+        setVolume(0);
         setDrop(false);
     };
 
     return (
         <div className="p-6 space-y-6">
+            {/* TITLE */}
             <h1 className="text-2xl font-bold">
                 Experiment: Determination of Acid Value of Oil
             </h1>
@@ -47,8 +51,9 @@ export default function AcidValueExperiment() {
             <section className="bg-white p-4 border rounded">
                 <h2 className="font-semibold text-lg">Aim</h2>
                 <p>
-                    To determine the acid value of the given oil sample by titration
-                    against standard potassium hydroxide (KOH) solution.
+                    To determine the acid value of the given oil sample by
+                    titration with standard potassium hydroxide (KOH) solution
+                    using phenolphthalein as indicator.
                 </p>
             </section>
 
@@ -58,7 +63,7 @@ export default function AcidValueExperiment() {
                     Experimental Setup
                 </h2>
 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-6">
                     <select
                         className="p-2 border rounded"
                         value={selectedOil.name}
@@ -97,7 +102,7 @@ export default function AcidValueExperiment() {
                             className="p-2 border rounded bg-gray-100 w-32"
                         />
                         <p className="text-sm text-gray-600">
-                            Normality (N)
+                            Normality of KOH
                         </p>
                     </div>
                 </div>
@@ -106,12 +111,23 @@ export default function AcidValueExperiment() {
             {/* LAB SIMULATION */}
             <LabTable>
                 <Beaker
-                    oilColor={selectedOil.color}
-                    oilVolume={oilWeight}
+                    liquidColor={selectedOil.color}
+                    liquidVolume={oilWeight}
+                    label="Beaker (Oil Sample)"
                 />
+
+
                 <Pipette />
+
                 <DropAnimation active={drop} />
-                <ConicalFlask endpoint={volume >= 2.5} />
+
+                {/* 🔴 IMPORTANT FIX IS HERE */}
+                <ConicalFlask
+                    volume={volume}
+                    endpointVolume={ENDPOINT_VOLUME}
+                    preEndpointColor="#fde68a"   // faint / colorless
+                    endpointColor="#f9a8d4"      // phenolphthalein pink
+                />
             </LabTable>
 
             {/* ACTION BUTTONS */}
@@ -135,16 +151,14 @@ export default function AcidValueExperiment() {
             <section className="bg-white p-4 border rounded">
                 <h2 className="font-semibold text-lg">Procedure</h2>
                 <ol className="list-decimal ml-6 space-y-1">
-                    <li>Weigh the oil sample accurately (in grams).</li>
-                    <li>Dissolve the oil in a suitable solvent.</li>
+                    <li>Weigh the oil sample accurately.</li>
+                    <li>Dissolve it in a suitable solvent.</li>
                     <li>Add phenolphthalein indicator.</li>
                     <li>
-                        Titrate against standard KOH solution until a faint
-                        permanent pink color appears.
+                        Titrate with standard KOH until a faint permanent
+                        pink colour appears.
                     </li>
-                    <li>
-                        Note the volume of KOH used (in millilitres).
-                    </li>
+                    <li>Note the volume of KOH used.</li>
                 </ol>
             </section>
 
@@ -156,11 +170,11 @@ export default function AcidValueExperiment() {
                 </p>
                 <ul className="mt-2 text-sm">
                     <li>V = Volume of KOH used (mL)</li>
-                    <li>N = Normality of KOH (eq/L)</li>
+                    <li>N = Normality of KOH</li>
                     <li>W = Weight of oil (g)</li>
                 </ul>
                 <p className="mt-2 text-sm">
-                    Acid Value is expressed as <b>mg KOH / g of oil</b>.
+                    Acid value is expressed as <b>mg KOH / g oil</b>.
                 </p>
             </section>
 
@@ -174,7 +188,7 @@ export default function AcidValueExperiment() {
                     Volume of KOH used (V): <b>{volume} mL</b>
                 </p>
                 <p>
-                    Normality of KOH (N): <b>{DEFAULT_NORMALITY} N</b>
+                    Normality of KOH (N): <b>{NORMALITY} N</b>
                 </p>
                 <p>
                     Weight of oil (W): <b>{oilWeight} g</b>
@@ -182,8 +196,7 @@ export default function AcidValueExperiment() {
 
                 <p className="mt-2 text-lg">
                     <b>
-                        Acid Value of the given oil =
-                        {" "}
+                        Acid Value of the given oil ={" "}
                         {acidValue} mg KOH / g oil
                     </b>
                 </p>
