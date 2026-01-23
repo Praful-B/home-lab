@@ -3,7 +3,7 @@ export default function ConicalFlask({ endpoint }: { endpoint: boolean }) {
         <div
             style={{
                 position: "absolute",
-                left: "620px",     // ⭐ flask center
+                left: "620px",          // ⭐ AXIS_X
                 bottom: "50px",
                 transform: "translateX(-50%)",
                 textAlign: "center",

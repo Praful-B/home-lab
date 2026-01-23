@@ -3,8 +3,8 @@ export default function Pipette() {
         <div
             style={{
                 position: "absolute",
-                left: "430px",
-                top: "55px",   // ⬆️ moved UP (was ~85px)
+                left: "430px",   // 430 + ~190 tip = 620
+                top: "55px",
                 textAlign: "center",
                 zIndex: 10,
             }}
@@ -37,7 +37,7 @@ export default function Pipette() {
                     strokeWidth="3"
                 />
 
-                {/* Tip */}
+                {/* Tip (ends at ~190px) */}
                 <rect
                     x="180"
                     y="28"
