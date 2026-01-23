@@ -8,12 +8,13 @@ import AcidValueExperiment from "./features/chemistry/pages/AcidValueExperiment.
 function App() {
   return (
     <Routes>
-
       <Route path="/" element={<Home />} />
       <Route path="/physicsHome" element={<PhysicsHome />} />
       <Route path="/chemistryHome" element={<ChemistryHome />} />
-        <Route path="/chemistryHome/acid-value" element={<AcidValueExperiment />} />
-
+      <Route
+        path="/chemistryHome/acid-value"
+        element={<AcidValueExperiment />}
+      />
     </Routes>
   );
 }
