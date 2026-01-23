@@ -26,7 +26,7 @@ function App() {
         <Route path="/chemistryHome/distillation" element={<DistillationExperiment/>}/>
       <Route path="/physicsHome/projectile-motion" element={<ProjectileMotion />} />
       <Route path="/physicsHome/mirrors-lenses" element={<MirrorsAndLenses />} />
-        <Route path="/chemistry/electrolysis" element={<ElectrolysisExperiment />}/>
+        <Route path="/chemistryHome/electrolysis" element={<ElectrolysisExperiment />}/>
 
     </Routes>
   );
