@@ -9,14 +9,13 @@ import HardnessExperiment from "./features/chemistry/pages/HardnessExperiment";
 function App() {
   return (
     <Routes>
-
       <Route path="/" element={<Home />} />
       <Route path="/physicsHome" element={<PhysicsHome />} />
       <Route path="/chemistryHome" element={<ChemistryHome />} />
-        <Route path="/chemistryHome/acid-value" element={<AcidValueExperiment />} />
-        <Route path="/chemistryHome/hardness" element={<HardnessExperiment />}/>
-
-
+      <Route
+        path="/chemistryHome/acid-value"
+        element={<AcidValueExperiment />}
+      />
     </Routes>
   );
 }
