@@ -7,6 +7,7 @@ import AcidValueExperiment from "./features/chemistry/pages/AcidValueExperiment.
 import HardnessExperiment from "./features/chemistry/pages/HardnessExperiment";
 
 import OhmsLaw from "../src/features/physics/pages/OhmsLaw";
+import Magnetism from "../src/features/physics/pages/Magnetism.tsx";
 import ProjectileMotion from "../src/features/physics/pages/ProjectileMotion";
 import MirrorsAndLenses from "../src/features/physics/pages/MirrorsAndLenses";
 
@@ -15,9 +16,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/physicsHome" element={<PhysicsHome />} />
-      <Route path="/chemistryHome" element={<ChemistryHome />} />
-
       <Route path="/physicsHome/ohms-law" element={<OhmsLaw />} />
+      <Route path="/physicsHome/Magnetism" element={<Magnetism />} />
+
+      <Route path="/chemistryHome" element={<ChemistryHome />} />
       <Route
         path="/chemistryHome/acid-value"
         element={<AcidValueExperiment />}
@@ -30,7 +32,6 @@ function App() {
       <Route path="/physicsHome/mirrors-lenses" element={<MirrorsAndLenses />} />
 
     </Routes>
-    
   );
 }
 

@@ -116,13 +116,7 @@ function SliderControl({
   );
 }
 
-function Btn({
-  text,
-  onClick,
-}: {
-  text: string;
-  onClick: () => void;
-}) {
+function Btn({ text, onClick }: { text: string; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
@@ -144,11 +138,7 @@ function degToRad(deg: number) {
 /** =========================
  *  PROJECTILE GRAPH (SVG)
  *  ========================= */
-function ProjectileGraph({
-  points,
-}: {
-  points: { x: number; y: number }[];
-}) {
+function ProjectileGraph({ points }: { points: { x: number; y: number }[] }) {
   const W = 420;
   const H = 260;
   const PAD_L = 50;
@@ -166,11 +156,9 @@ function ProjectileGraph({
     return Math.max(1, m);
   }, [points]);
 
-  const xScale = (x: number) =>
-    PAD_L + (x / maxX) * (W - PAD_L - PAD_R);
+  const xScale = (x: number) => PAD_L + (x / maxX) * (W - PAD_L - PAD_R);
 
-  const yScale = (y: number) =>
-    H - PAD_B - (y / maxY) * (H - PAD_T - PAD_B);
+  const yScale = (y: number) => H - PAD_B - (y / maxY) * (H - PAD_T - PAD_B);
 
   const poly = points.map((p) => `${xScale(p.x)},${yScale(p.y)}`).join(" ");
 
@@ -194,7 +182,14 @@ function ProjectileGraph({
 
         {/* axes */}
         <line x1="50" y1="15" x2="50" y2="225" stroke="#333" strokeWidth="2" />
-        <line x1="50" y1="225" x2="405" y2="225" stroke="#333" strokeWidth="2" />
+        <line
+          x1="50"
+          y1="225"
+          x2="405"
+          y2="225"
+          stroke="#333"
+          strokeWidth="2"
+        />
 
         {/* grid */}
         {[...Array(5)].map((_, i) => {
@@ -412,8 +407,8 @@ export default function ProjectileMotion() {
 
         <SectionCard title="Aim">
           <p className="text-gray-800">
-            To study the motion of a projectile and calculate its time of flight,
-            maximum height and horizontal range.
+            To study the motion of a projectile and calculate its time of
+            flight, maximum height and horizontal range.
           </p>
         </SectionCard>
 
@@ -548,8 +543,8 @@ export default function ProjectileMotion() {
           </p>
 
           <p className="mt-3 font-bold text-gray-900">
-            Result: Projectile follows a parabolic path as shown in the simulation
-            and graph.
+            Result: Projectile follows a parabolic path as shown in the
+            simulation and graph.
           </p>
         </div>
       </div>

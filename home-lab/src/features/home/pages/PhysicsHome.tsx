@@ -25,6 +25,11 @@ function PhysicsHome() {
        to="/physicsHome/mirrors-lenses"
       />
 
+        <DefaultExperimentButton
+          text="Magnetism around north and south poles"
+          b_type="rectangle"
+          to="/physicsHome/Magnetism"
+        />
       </div>
     </>
   );
