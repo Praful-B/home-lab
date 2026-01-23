@@ -14,11 +14,11 @@ function PhysicsHome() {
             to="/physicsHome/ohms-law"
           />
 
-        <DefaultExperimentButton
-          text="Projectile Motion"
-          b_type="rectangle"
-          to="/physicsHome/projectile-motion"
-        />
+          <DefaultExperimentButton
+            text="Projectile Motion"
+            b_type="rectangle"
+            to="/physicsHome/projectile-motion"
+          />
           <DefaultExperimentButton
             text="Magnetism around north and south poles"
             b_type="rectangle"
