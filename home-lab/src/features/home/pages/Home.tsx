@@ -10,12 +10,12 @@ function Home() {
           text="Physics"
           to="/physicsHome"
           b_type="b_square"
-        ></DefaultExperimentButton>
+        />
         <DefaultExperimentButton
           text="Chemisty"
           to="/chemistryHome"
           b_type="b_square"
-        ></DefaultExperimentButton>
+        />
       </div>
 
       <footer>
