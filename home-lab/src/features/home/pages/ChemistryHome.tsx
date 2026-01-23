@@ -9,12 +9,22 @@ function ChemistryHome() {
         text="Acid Value Caliculation"
         to="/chemistryHome/acid-value"
         b_type="rectangle"
-      ></DefaultExperimentButton>
+      />
       <DefaultExperimentButton
         text="Hardness of Water"
         to="/chemistryHome/HardnessExperiment"
         b_type="rectangle"
-      ></DefaultExperimentButton>
+      />
+      <DefaultExperimentButton
+        text="Simple Distillation"
+        to="/chemistryHome/distillation"
+        b_type="rectangle"
+      />
+      <DefaultExperimentButton
+        text="Electrolysis caliculation of ratio."
+        to="/chemistryHome/electrolysis"
+        b_type="rectangle"
+      /> 
     </>
   );
 }
