@@ -5,7 +5,7 @@ import PhysicsHome from "../src/features/home/pages/PhysicsHome";
 import ChemistryHome from "../src/features/home/pages/ChemistryHome";
 import AcidValueExperiment from "./features/chemistry/pages/AcidValueExperiment.tsx";
 import HardnessExperiment from "./features/chemistry/pages/HardnessExperiment";
-
+import DistillationExperiment  from "./features/chemistry/pages/DistillationExperiment.tsx";
 import OhmsLaw from "../src/features/physics/pages/OhmsLaw";
 import Magnetism from "../src/features/physics/pages/Magnetism.tsx";
 import ProjectileMotion from "../src/features/physics/pages/ProjectileMotion";
@@ -28,6 +28,7 @@ function App() {
         path="/chemistryHome/HardnessExperiment"
         element={<HardnessExperiment />}
       />
+        <Route path="/chemistryHome/distillation" element={<DistillationExperiment/>}/>
       <Route path="/physicsHome/projectile-motion" element={<ProjectileMotion />} />
       <Route path="/physicsHome/mirrors-lenses" element={<MirrorsAndLenses />} />
 
