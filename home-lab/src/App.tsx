@@ -10,6 +10,7 @@ import OhmsLaw from "../src/features/physics/pages/OhmsLaw";
 import Magnetism from "../src/features/physics/pages/Magnetism.tsx";
 import ProjectileMotion from "../src/features/physics/pages/ProjectileMotion";
 import MirrorsAndLenses from "../src/features/physics/pages/MirrorsAndLenses";
+import ElectrolysisExperiment from "./features/chemistry/pages/ElectrolysisExperiment";
 
 function App() {
   return (
@@ -20,17 +21,12 @@ function App() {
       <Route path="/physicsHome/Magnetism" element={<Magnetism />} />
 
       <Route path="/chemistryHome" element={<ChemistryHome />} />
-      <Route
-        path="/chemistryHome/acid-value"
-        element={<AcidValueExperiment />}
-      />
-      <Route
-        path="/chemistryHome/HardnessExperiment"
-        element={<HardnessExperiment />}
-      />
+      <Route path="/chemistryHome/acid-value" element={<AcidValueExperiment />}/>
+      <Route path="/chemistryHome/HardnessExperiment" element={<HardnessExperiment />}/>
         <Route path="/chemistryHome/distillation" element={<DistillationExperiment/>}/>
       <Route path="/physicsHome/projectile-motion" element={<ProjectileMotion />} />
       <Route path="/physicsHome/mirrors-lenses" element={<MirrorsAndLenses />} />
+        <Route path="/chemistry/electrolysis" element={<ElectrolysisExperiment />}/>
 
     </Routes>
   );
