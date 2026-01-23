@@ -1,4 +1,3 @@
-
 import { useMemo, useState } from "react";
 
 /** =========================
@@ -144,11 +143,7 @@ function WireButton({
  *  SIMPLE SVG GRAPH (NO LIBS)
  *  ========================= */
 
-function VvsIGraph({
-  resistance,
-}: {
-  resistance: number;
-}) {
+function VvsIGraph({ resistance }: { resistance: number }) {
   // Graph size
   const W = 360;
   const H = 260;
@@ -170,29 +165,24 @@ function VvsIGraph({
     return Math.max(0.2, last);
   }, [points]);
 
-  const xScale = (v: number) =>
-    PAD_L + (v / 10) * (W - PAD_L - PAD_R);
+  const xScale = (v: number) => PAD_L + (v / 10) * (W - PAD_L - PAD_R);
 
-  const yScale = (i: number) =>
-    H - PAD_B - (i / maxI) * (H - PAD_T - PAD_B);
+  const yScale = (i: number) => H - PAD_B - (i / maxI) * (H - PAD_T - PAD_B);
 
-  const polyline = points
-    .map((p) => `${xScale(p.v)},${yScale(p.i)}`)
-    .join(" ");
+  const polyline = points.map((p) => `${xScale(p.v)},${yScale(p.i)}`).join(" ");
 
   return (
     <div
       className="rounded-lg p-4"
-      style={{ backgroundColor: THEME.CREAM, border: `2px solid ${THEME.BLUE}` }}
+      style={{
+        backgroundColor: THEME.CREAM,
+        border: `2px solid ${THEME.BLUE}`,
+      }}
     >
       <h3 className="text-lg font-bold mb-3 text-gray-800">Graph: V vs I</h3>
 
       <div className="w-full overflow-hidden">
-        <svg
-          width="100%"
-          viewBox={`0 0 ${W} ${H}`}
-          className="rounded-md"
-        >
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} className="rounded-md">
           {/* background */}
           <rect x="0" y="0" width={W} height={H} fill={THEME.CREAM} />
 
@@ -293,9 +283,21 @@ function CircuitDiagram({
     <Panel title="Circuit Diagram (Virtual)">
       {/* Wire Buttons */}
       <div className="flex flex-wrap gap-3 mb-4">
-        <WireButton label="Wire 1" active={wire1} onClick={() => setWire1(!wire1)} />
-        <WireButton label="Wire 2" active={wire2} onClick={() => setWire2(!wire2)} />
-        <WireButton label="Wire 3" active={wire3} onClick={() => setWire3(!wire3)} />
+        <WireButton
+          label="Wire 1"
+          active={wire1}
+          onClick={() => setWire1(!wire1)}
+        />
+        <WireButton
+          label="Wire 2"
+          active={wire2}
+          onClick={() => setWire2(!wire2)}
+        />
+        <WireButton
+          label="Wire 3"
+          active={wire3}
+          onClick={() => setWire3(!wire3)}
+        />
       </div>
 
       {/* Circuit Box */}
@@ -360,7 +362,9 @@ function CircuitDiagram({
               <div
                 className="h-3 transition-all duration-300 rounded-full"
                 style={{
-                  width: circuitClosed ? `${Math.min(100, current * 10)}%` : "0%",
+                  width: circuitClosed
+                    ? `${Math.min(100, current * 10)}%`
+                    : "0%",
                   backgroundColor: THEME.BLUE,
                 }}
               />
@@ -424,8 +428,8 @@ export default function OhmsLaw() {
         {/* AIM */}
         <SectionCard title="Aim">
           <p className="text-gray-800">
-            To verify Ohm&apos;s law by observing the relation between voltage (V),
-            current (I) and resistance (R) in an electrical circuit.
+            To verify Ohm&apos;s law by observing the relation between voltage
+            (V), current (I) and resistance (R) in an electrical circuit.
           </p>
         </SectionCard>
 
@@ -501,10 +505,14 @@ export default function OhmsLaw() {
         {/* PROCEDURE */}
         <SectionCard title="Procedure">
           <ol className="list-decimal ml-6 text-gray-800">
-            <li>Connect the battery, ammeter and resistor in series using wires.</li>
+            <li>
+              Connect the battery, ammeter and resistor in series using wires.
+            </li>
             <li>Set a voltage value using the slider.</li>
             <li>Note the current value shown in the ammeter reading.</li>
-            <li>Change voltage or resistance and observe the change in current.</li>
+            <li>
+              Change voltage or resistance and observe the change in current.
+            </li>
             <li>Plot the graph of V vs I to verify Ohm&apos;s Law.</li>
           </ol>
         </SectionCard>
@@ -513,8 +521,7 @@ export default function OhmsLaw() {
         <SectionCard title="Formula">
           <div className="bg-gray-100 p-3 rounded-md font-mono text-sm">
             V = I × R <br />
-            I = V / R <br />
-            R = V / I
+            I = V / R <br />R = V / I
           </div>
         </SectionCard>
 
@@ -538,8 +545,8 @@ export default function OhmsLaw() {
           </p>
 
           <p className="mt-3 font-bold text-gray-900">
-            Result: Ohm&apos;s Law is verified as V/I remains constant for a fixed
-            resistance.
+            Result: Ohm&apos;s Law is verified as V/I remains constant for a
+            fixed resistance.
           </p>
         </div>
       </div>
