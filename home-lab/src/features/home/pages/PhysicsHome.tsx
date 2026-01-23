@@ -1,30 +1,35 @@
-import { commonPhysicsExperiments } from "../../../assets/data/commonPhysicsExperiments";
 import DefaultExperimentButton from "../components/DefaultExpeimentButton";
 import NavBar from "../components/NavBar";
 
 function PhysicsHome() {
   return (
     <>
-      <div>
-        <NavBar currentPage="PhysicsHome" />
-      </div>
-      <div className="flex">
-        <div>
-          {commonPhysicsExperiments.map((exp) => (
-            <DefaultExperimentButton
-              text={exp.name}
-              b_type="rectangle"
-              to="/"
-            />
-          ))}
-        </div>
-        <div>
-          <DefaultExperimentButton
-            b_type="b_square"
-            to="/"
-            text="Advanced SandBox"
-          />
-        </div>
+      <NavBar currentPage="PhysicsHome" />
+
+      <div className="flex flex-col items-center">
+        <DefaultExperimentButton
+          text="Ohms-law"
+          b_type="rectangle"
+          to="/physicsHome/ohms-law"
+        />
+
+        <DefaultExperimentButton
+          text="Projectile Motion"
+          b_type="rectangle"
+          to="/physicsHome/projectile-motion"
+        />
+
+        <DefaultExperimentButton
+        text="Mirrors and Lenses"
+        b_type="rectangle"
+       to="/physicsHome/mirrors-lenses"
+      />
+
+        <DefaultExperimentButton
+          text="Magnetism around north and south poles"
+          b_type="rectangle"
+          to="/physicsHome/Magnetism"
+        />
       </div>
     </>
   );
