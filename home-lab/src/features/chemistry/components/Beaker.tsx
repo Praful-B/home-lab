@@ -1,12 +1,19 @@
 type Props = {
-    oilColor: string;
-    oilVolume: number; // in grams (used only for visual height)
+    liquidColor: string;
+    liquidVolume: number;
+    label: string;
 };
 
-export default function Beaker({ oilColor, oilVolume }: Props) {
-    // Visual scaling (purely for UI)
+export default function Beaker({
+                                   liquidColor,
+                                   liquidVolume,
+                                   label,
+                               }: Props) {
     const maxLiquidHeight = 90;
-    const liquidHeight = Math.min(maxLiquidHeight, oilVolume * 8);
+    const liquidHeight = Math.min(
+        maxLiquidHeight,
+        liquidVolume * 2
+    );
 
     return (
         <div
@@ -45,14 +52,14 @@ export default function Beaker({ oilColor, oilVolume }: Props) {
                     strokeWidth="4"
                 />
 
-                {/* Oil (LIQUID) */}
+                {/* Liquid */}
                 <rect
                     x="48"
                     y={175 - liquidHeight}
                     width="74"
                     height={liquidHeight}
                     rx="10"
-                    fill={oilColor}
+                    fill={liquidColor}
                     style={{ transition: "all 600ms ease" }}
                 />
 
@@ -72,7 +79,7 @@ export default function Beaker({ oilColor, oilVolume }: Props) {
 
             {/* LABEL */}
             <div className="mt-2 text-sm font-semibold text-gray-700">
-                Beaker (Oil Sample)
+                {label}
             </div>
         </div>
     );
