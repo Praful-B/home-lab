@@ -16,6 +16,10 @@ function App() {
         path="/chemistryHome/acid-value"
         element={<AcidValueExperiment />}
       />
+      <Route
+        path="/chemistryHome/HardnessExperiment"
+        element={<HardnessExperiment />}
+      />
     </Routes>
   );
 }
