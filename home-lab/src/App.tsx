@@ -8,6 +8,7 @@ import HardnessExperiment from "./features/chemistry/pages/HardnessExperiment";
 
 import OhmsLaw from "../src/features/physics/pages/OhmsLaw";
 import ProjectileMotion from "../src/features/physics/pages/ProjectileMotion";
+import MirrorsAndLenses from "../src/features/physics/pages/MirrorsAndLenses";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         element={<HardnessExperiment />}
       />
       <Route path="/physicsHome/projectile-motion" element={<ProjectileMotion />} />
+      <Route path="/physicsHome/mirrors-lenses" element={<MirrorsAndLenses />} />
 
     </Routes>
     
