@@ -74,7 +74,6 @@ function ValueBox({
 /** =========================
  *  MAGNET FIELD SVG
  *  ========================= */
-
 function MagnetFieldLines({
   showLines,
   strength,
@@ -82,9 +81,55 @@ function MagnetFieldLines({
   showLines: boolean;
   strength: number;
 }) {
-  // strength => affects opacity and thickness
-  const opacity = useMemo(() => 0.2 + strength / 120, [strength]);
-  const strokeW = useMemo(() => 1 + strength / 50, [strength]);
+  // opacity + thickness
+  const opacity = useMemo(() => 0.25 + strength / 160, [strength]);
+  const strokeW = useMemo(() => 1.2 + strength / 60, [strength]);
+
+  // number of loops depends on strength
+  const lineCount = useMemo(() => {
+    if (strength < 25) return 4;
+    if (strength < 50) return 6;
+    if (strength < 75) return 8;
+    return 10;
+  }, [strength]);
+
+  // gap between loops (higher strength => smaller gap)
+  const gap = useMemo(() => {
+    return 18 - strength / 12; // 10% ~17 , 100% ~9
+  }, [strength]);
+
+  // generate loop paths around magnet (like real field lines)
+  const loops = useMemo(() => {
+    const arr: { d: string; arrowX: number; arrowY: number }[] = [];
+
+    for (let i = 0; i < lineCount; i++) {
+      const off = i * gap;
+
+      // Outer loop
+      // Start near N side -> go above -> reach S side -> return below -> back to N
+      const topY = 75 - off;
+      const bottomY = 225 + off;
+
+      // limit values so they don't go out of box
+      const tY = Math.max(25, topY);
+      const bY = Math.min(275, bottomY);
+
+      // Loop curve path
+      const d = `
+        M 210 150
+        C 210 ${tY}, 390 ${tY}, 390 150
+        C 390 ${bY}, 210 ${bY}, 210 150
+      `;
+
+      // arrow position (put arrows on top curve)
+      const arrowX = 300;
+      const arrowY = tY + 10;
+
+      arr.push({ d, arrowX, arrowY });
+    }
+
+    return arr;
+  }, [lineCount, gap]);
 
   return (
     <div
@@ -99,72 +144,55 @@ function MagnetFieldLines({
           {/* background */}
           <rect width="600" height="300" fill={THEME.CREAM} />
 
-          {/* field lines */}
+          {/* Arrow marker */}
+          <defs>
+            <marker
+              id="arrowHead"
+              markerWidth="10"
+              markerHeight="10"
+              refX="6"
+              refY="3"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,0 L0,6 L7,3 z" fill={THEME.BLUE} />
+            </marker>
+          </defs>
+
+          {/* Field lines like your image */}
           {showLines && (
             <>
-              {/* Outer lines */}
-              <path
-                d="M 220 150 C 220 40, 380 40, 380 150"
-                fill="none"
-                stroke={THEME.BLUE}
-                strokeOpacity={opacity}
-                strokeWidth={strokeW}
-              />
-              <path
-                d="M 220 150 C 240 70, 360 70, 380 150"
-                fill="none"
-                stroke={THEME.BLUE}
-                strokeOpacity={opacity}
-                strokeWidth={strokeW}
-              />
-              <path
-                d="M 220 150 C 260 100, 340 100, 380 150"
-                fill="none"
-                stroke={THEME.BLUE}
-                strokeOpacity={opacity}
-                strokeWidth={strokeW}
-              />
+              {loops.map((loop, i) => (
+                <path
+                  key={i}
+                  d={loop.d}
+                  fill="none"
+                  stroke={THEME.BLUE}
+                  strokeOpacity={opacity}
+                  strokeWidth={strokeW}
+                  markerMid="url(#arrowHead)"
+                />
+              ))}
 
+              {/* Inner field (inside magnet direction S → N) */}
               <path
-                d="M 220 150 C 220 260, 380 260, 380 150"
+                d="M 390 150 C 350 150, 250 150, 210 150"
                 fill="none"
                 stroke={THEME.BLUE}
                 strokeOpacity={opacity}
-                strokeWidth={strokeW}
-              />
-              <path
-                d="M 220 150 C 240 230, 360 230, 380 150"
-                fill="none"
-                stroke={THEME.BLUE}
-                strokeOpacity={opacity}
-                strokeWidth={strokeW}
-              />
-              <path
-                d="M 220 150 C 260 200, 340 200, 380 150"
-                fill="none"
-                stroke={THEME.BLUE}
-                strokeOpacity={opacity}
-                strokeWidth={strokeW}
-              />
-
-              {/* Small inner straight lines (inside magnet direction) */}
-              <path
-                d="M 380 150 C 340 150, 260 150, 220 150"
-                fill="none"
-                stroke={THEME.BLUE}
-                strokeOpacity={opacity}
-                strokeWidth={strokeW}
+                strokeWidth={strokeW + 0.8}
+                markerEnd="url(#arrowHead)"
               />
             </>
           )}
 
-          {/* magnet body */}
-          <rect x="220" y="125" width="80" height="50" fill="#C0392B" rx="6" />
-          <rect x="300" y="125" width="80" height="50" fill="#2980B9" rx="6" />
+          {/* Magnet body */}
+          <rect x="210" y="125" width="90" height="50" fill="#C0392B" rx="6" />
+          <rect x="300" y="125" width="90" height="50" fill="#2980B9" rx="6" />
 
           {/* N/S text */}
           <text
-            x="260"
+            x="255"
             y="158"
             textAnchor="middle"
             fontSize="20"
@@ -174,7 +202,7 @@ function MagnetFieldLines({
             N
           </text>
           <text
-            x="340"
+            x="345"
             y="158"
             textAnchor="middle"
             fontSize="20"
@@ -184,15 +212,14 @@ function MagnetFieldLines({
             S
           </text>
 
-          {/* Labels */}
-          <text x="50" y="30" fontSize="14" fontWeight="bold" fill="#333">
-            Magnetic Field Lines
+          {/* Small label */}
+          <text x="30" y="30" fontSize="14" fontWeight="bold" fill="#333">
+            Magnetic Field Lines (N → S)
           </text>
         </svg>
 
-        {/* note */}
         <p className="absolute bottom-2 left-3 text-sm font-semibold text-gray-700">
-          Lines go from North (N) → South (S)
+          Field lines are denser near the poles
         </p>
       </div>
     </div>
