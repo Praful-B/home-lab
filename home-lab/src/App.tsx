@@ -7,6 +7,7 @@ import AcidValueExperiment from "./features/chemistry/pages/AcidValueExperiment.
 import HardnessExperiment from "./features/chemistry/pages/HardnessExperiment";
 
 import OhmsLaw from "../src/features/physics/pages/OhmsLaw";
+import ProjectileMotion from "../src/features/physics/pages/ProjectileMotion";
 
 function App() {
   return (
@@ -24,7 +25,10 @@ function App() {
         path="/chemistryHome/HardnessExperiment"
         element={<HardnessExperiment />}
       />
+      <Route path="/physicsHome/projectile-motion" element={<ProjectileMotion />} />
+
     </Routes>
+    
   );
 }
 
