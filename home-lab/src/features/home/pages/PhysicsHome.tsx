@@ -18,6 +18,13 @@ function PhysicsHome() {
           b_type="rectangle"
           to="/physicsHome/projectile-motion"
         />
+
+        <DefaultExperimentButton
+        text="Mirrors and Lenses"
+        b_type="rectangle"
+       to="/physicsHome/mirrors-lenses"
+      />
+
         <DefaultExperimentButton
           text="Magnetism around north and south poles"
           b_type="rectangle"
