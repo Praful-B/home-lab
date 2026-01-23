@@ -1,1 +1,43 @@
 @import "tailwindcss";
+@import "tailwindcss";
+
+/* Fade up */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+/* Title pop */
+@keyframes titlePop {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-title {
+  animation: titlePop 0.7s ease-out both;
+}
+
+/* Card appear */
+@keyframes cardRise {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-card {
+  animation: cardRise 0.9s ease-out forwards;
+}
+.delay-2 { animation-delay: 0.2s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Floating shapes */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0); }
+}
