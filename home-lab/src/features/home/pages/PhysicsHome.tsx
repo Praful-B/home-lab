@@ -30,6 +30,8 @@ function PhysicsHome() {
           b_type="rectangle"
           to="/physicsHome/Magnetism"
         />
+
+     
       </div>
     </>
   );

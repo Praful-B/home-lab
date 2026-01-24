@@ -11,6 +11,9 @@ import Magnetism from "../src/features/physics/pages/Magnetism.tsx";
 import ProjectileMotion from "../src/features/physics/pages/ProjectileMotion";
 import MirrorsAndLenses from "../src/features/physics/pages/MirrorsAndLenses";
 
+import CircuitSandbox from "../src/features/physics/pages/circuitsandbox";
+
+
 function App() {
   return (
     <Routes>
@@ -30,6 +33,9 @@ function App() {
       />
       <Route path="/physicsHome/projectile-motion" element={<ProjectileMotion />} />
       <Route path="/physicsHome/mirrors-lenses" element={<MirrorsAndLenses />} />
+
+      <Route path="/physicsHome/circuit-sandbox" element={<CircuitSandbox />} />
+
 
     </Routes>
   );
