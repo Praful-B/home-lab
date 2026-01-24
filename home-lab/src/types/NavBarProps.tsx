@@ -1,3 +1,3 @@
 export default interface NavBarProps {
-  currentPage: "Home" | "PhysicsHome" | "ChemistryHome";
+  currentPage: "Home" | "PhysicsHome" | "ChemistryHome" | "BiologyHome";
 }

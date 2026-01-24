@@ -34,6 +34,19 @@ function Home() {
               to="/chemistryHome"
               b_type="b_square"
             />
+
+            <DefaultExperimentButton
+              text="Biology"
+              to="/BiologyHome"
+              b_type="b_square"
+            />
+
+            <DefaultExperimentButton
+              text="Math"
+              to="/MathHome"
+              b_type="b_square"
+            />
+
           </div>
         </div>
 
