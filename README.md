@@ -13,8 +13,6 @@ This project simulates **Chemistry and Physics experiments** using reusable lab 
   - Data-driven experiment setup
 - ️ **Physics Experiments**
   - Modular structure for easy expansion
-- ♻ **Reusable Components**
-  - Each lab apparatus is built as an independent React component
 -  **Fast & Modern Stack**
   - Vite for lightning-fast development
   - React + TypeScript for scalability and safety
