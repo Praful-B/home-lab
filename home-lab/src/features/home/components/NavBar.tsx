@@ -4,11 +4,12 @@ import HamburgerButton from "./HamburgerButton";
 export default function NavBar(props: NavBarProps) {
   const currentPage = props.currentPage;
 
-  type PageKey = "Home" | "PhysicsHome" | "ChemistryHome";
+  type PageKey = "Home" | "PhysicsHome" | "ChemistryHome" | "BiologyHome";
   const currentPageTitle: Record<PageKey, string> = {
     Home: "Home Science Lab",
     PhysicsHome: "Physics Lab",
     ChemistryHome: "Chemistry Lab",
+    BiologyHome: "Biology Lab"
   };
 
   return (
