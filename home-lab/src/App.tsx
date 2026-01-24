@@ -11,8 +11,8 @@ import MirrorsAndLenses from "../src/features/physics/pages/MirrorsAndLenses";
 import ChemistryHome from "../src/features/home/pages/ChemistryHome";
 import AcidValueExperiment from "./features/chemistry/pages/AcidValueExperiment.tsx";
 import HardnessExperiment from "./features/chemistry/pages/HardnessExperiment";
-import DistillationExperiment from "./features/chemistry/pages/DistillationExperiment.tsx";
-import ElectrolysisExperiment from "./features/chemistry/pages/ElectrolysisExperiment";
+import DistillationExperiment from "../src/features/chemistry/pages/DistillationExperiment";
+import ElectrolysisExperiment from "../src/features/chemistry/pages/ElectrolysisExperiment";
 
 function App() {
   return (
@@ -39,14 +39,9 @@ function App() {
         path="/chemistryHome/HardnessExperiment"
         element={<HardnessExperiment />}
       />
-      <Route
-        path="/chemistryHome/distillation"
-        element={<DistillationExperiment />}
-      />
-      <Route
-        path="/chemistryHome/electrolysis"
-        element={<ElectrolysisExperiment />}
-      />
+      <Route path="/chemistryHome/distillation" element={<DistillationExperiment />} />
+      <Route path="/chemistryHome/electrolysis" element={<ElectrolysisExperiment />} />
+
     </Routes>
   );
 }
